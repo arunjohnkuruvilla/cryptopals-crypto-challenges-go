@@ -1,9 +1,14 @@
 package set1
 
 import (
-	"fmt"
+	"encoding/hex"
+	"encoding/base64"
 )
 
-func HexToBase64() {
-	fmt.Println("Cryptopals Set 1 Challenge 1.")
+func HexToBase64(hexString string) (string, error) {
+	bytes, err := hex.DecodeString(hexString)
+	if err != nil {
+		return "", err
+	}
+	return base64.StdEncoding.EncodeToString(bytes), nil
 }
